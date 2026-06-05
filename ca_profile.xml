@@ -1,0 +1,24 @@
+<CommunityApplications>
+  <!-- Required profile -->
+  <Profile>
+    Describe what users will find in this repository, which apps or plugins you maintain, and where they should go for support.  Markdown supported
+  </Profile>
+  <!-- Optional icon -->
+  <Icon>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/icon.svg</Icon>
+  <!-- Optional web page -->
+  <WebPage>https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME</WebPage>
+  <!-- Optional support and donation links -->
+  <Forum>https://forums.unraid.net/topic/YOUR_SUPPORT_TOPIC</Forum>
+  <!-- Optional Discord link -->
+  <Discord>https://discord.gg/YOUR_INVITE_CODE</Discord>
+  <!-- Optional donation link -->
+  <DonateLink>https://github.com/sponsors/YOUR_GITHUB_USERNAME</DonateLink>
+  <!-- Optional donation text -->
+  <DonateText>Support this project</DonateText>
+  <!-- Optional photos -->
+  <Photo>URL to any photos</Photo>
+  <!-- You can add multiple photos by adding multiple <Photo> tags -->
+  <!-- Optional videos -->
+  <Video>URL to any video.  Youtube URLs are recommended</Video>
+  <!-- You can add multiple videos by adding multiple <Video> tags -->
+</CommunityApplications>

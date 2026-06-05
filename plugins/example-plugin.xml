@@ -1,0 +1,65 @@
+<Plugin>
+  <!-- Delete this file if your repository does not ship plugins. -->
+  <!-- Required fields -->
+
+  <!-- Name of the plugin -->
+  <Name>Example Plugin</Name>
+
+  <!-- Plain text description -->
+  <Overview>Explain what this plugin does and why users should install it.</Overview>
+  
+  <!-- NOTE: PluginURL must match exactly the URL of the PluginURL in the .plg file-->
+  <PluginURL>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/example-plugin.plg</PluginURL>
+  
+  <!-- Author of the plugin -->
+  <PluginAuthor>Your name, forum username etc</PluginAuthor>
+
+  
+  <!-- Optional entries -->
+  
+  <!-- If the plugin file has the support attribute <Support>...</Support> will be ignored in this file -->
+  <!-- NOTE: If the plugin file does not have the support attribute, <Support>...</Support> is REQUIRED -->
+  <Support>https://forums.unraid.net/topic/YOUR_SUPPORT_TOPIC</Support>
+  
+  <!-- Project page -->
+  <Project>https://github.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO</Project>
+
+  <!-- Readme first file -->
+  <ReadMe>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/README.md</ReadMe>
+
+  <!-- Discord invite code -->
+  <Discord>https://discord.gg/YOUR_DISCORD_INVITE_CODE</Discord>
+  
+  <!-- Valid category entries can be generated from the Application Categorizer plugin available in Apps -->
+  <Category>Tools:System</Category>
+  
+  <!-- If this plugin is a beta plugin, set Beta to true-->
+  <Beta>true</Beta>
+
+  <!-- Minimum and maximum Unraid version.  If the plugin file has min or max attributes these entries will be ignored-->
+  <MinVer>6.1</MinVer>
+  <MaxVer>7.3</MaxVer>
+
+  <!-- If this plugin is deprecated for all OS versions, set Deprecated to true -->
+  <Deprecated>true</Deprecated>
+
+  <!-- If the plugin is deprecated starting with a specific OS version, set DeprecatedMaxVer to the OS version-->
+  <DeprecatedMaxVer>7.2</DeprecatedMaxVer>
+  
+  <!-- If IconFA is specified, Icon will be ignored-->
+  <Icon>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon.png</Icon>
+  <!-- font awesome 4.7 icon name without the fa- prefix-->
+  <IconFA>bolt</IconFA>
+
+  <!-- License of the plugin-->
+  <License>GPLv2</License>
+
+  <!-- Screenshots -->
+  <!-- You can add multiple screenshots by adding multiple <Screenshot> tags -->
+  <Screenshot>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/screenshot.png</Screenshot>
+  
+  <!-- Video.  Youtube URLs are highlyrecommended -->
+  <!-- You can add multiple videos by adding multiple <Video> tags -->
+  <Video>https://www.youtube.com/watch?v=YOUR_YOUTUBE_VIDEO_ID</Video>
+
+</Plugin>

@@ -1,0 +1,104 @@
+<Container version="2">
+  <!-- Delete this file if your repository does not ship Docker apps. -->
+  <Name>container_name</Name>
+  <Repository>ghcr.io/YOUR_GITHUB_USERNAME/example-app:latest</Repository>
+  <Registry>https://ghcr.io/YOUR_GITHUB_USERNAME/example-app</Registry>
+  <Network>bridge</Network>
+
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+
+  <!-- Optional but highly recommended: app icon -->
+  <Icon>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon.png</Icon>
+
+  <!-- Optional theme-specific icon overrides -->
+  <!-- <Icon-black>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon-black.png</Icon-black> -->
+  <!-- <Icon-white>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon-white.png</Icon-white> -->
+  <!-- <Icon-azure>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon-azure.png</Icon-azure> -->
+  <!-- <Icon-gray>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon-gray.png</Icon-gray> -->
+  
+  <!-- NOTE: The port in the entry ALWAYS refers to the container port, not the host port-->
+  <WebUI>http://[IP]:[PORT:8080]</WebUI>
+
+  <!-- Plain text description -->
+  <Overview>Explain what this container does and why users should install it.</Overview>
+
+  <!-- NOTE: Either Support or Project is REQUIRED -->
+  <!-- Support forum -->
+  <Support>https://forums.unraid.net/topic/YOUR_SUPPORT_TOPIC</Support>
+  
+  <!-- Project page -->
+  <Project>https://github.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO</Project>
+
+  <!-- Raw URL to this exact template file -->
+  <TemplateURL>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/templates/example-app.xml</TemplateURL>
+
+  <!-- Readme first file -->
+  <ReadMe>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/README.md</ReadMe>
+
+  <!-- Optional Discord community URL -->
+  <Discord>https://discord.gg/YOUR_DISCORD_INVITE_CODE</Discord>
+
+  <!-- Optional Reddit community URL -->
+  <Reddit>https://www.reddit.com/r/YOUR_REDDIT_COMMUNITY</Reddit>
+
+  <!-- Optional Facebook community URL -->
+  <Facebook>https://www.facebook.com/YOUR_FACEBOOK_PAGE</Facebook>
+
+
+  
+  <!-- Valid category entries can be generated from the Application Categorizer plugin available in Apps -->
+  <Category>Tools:System</Category>
+
+  <!-- Optional extra app search terms -->
+  <ExtraSearchTerms>example sample starter</ExtraSearchTerms>
+
+  <!-- Optional system requirements text -->
+  <Requires>Internet access for first run</Requires>
+
+  <!-- Optional changelog text -->
+  <Changes>Initial release</Changes>
+
+  <!-- Optional date (YYYY-MM-DD or YYYY-MM-DD HH:MM:SS) -->
+  <Date>2026-01-01</Date>
+  
+  <!-- Optional: set to true if this is a beta container -->
+  <!-- <Beta>true</Beta> -->
+
+  <!-- Minimum and maximum Unraid version.-->
+  <MinVer>6.1</MinVer>
+  <MaxVer>7.3</MaxVer>
+
+  <!-- Optionally set this if this container is deprecated for all OS versions -->
+  <!-- <Deprecated>true</Deprecated> -->
+
+  <!-- Optional: deprecate starting with a specific OS version -->
+  <!-- <DeprecatedMaxVer>7.2</DeprecatedMaxVer> -->
+
+  <!-- License of the container-->
+  <License>GPLv2</License>
+
+  <!-- Screenshots -->
+  <!-- You can add multiple screenshots by adding multiple <Screenshot> tags -->
+  <Screenshot>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/screenshot.png</Screenshot>
+  
+  <!-- Video. YouTube URLs are highly recommended -->
+  <!-- You can add multiple videos by adding multiple <Video> tags -->
+  <Video>https://www.youtube.com/watch?v=YOUR_YOUTUBE_VIDEO_ID</Video>
+
+  <!-- Optional release branch selectors -->
+  <!--
+  <DefaultTagDescription>Stable releases</DefaultTagDescription>
+  <Branch>
+    <Tag>main</Tag>
+    <TagDescription>Latest commits from main branch</TagDescription>
+  </Branch>
+  -->
+
+  <!-- v2 templates should define ports/paths/variables with Config entries -->
+  <Config Name="WebUI" Target="8080" Default="8080" Mode="tcp" Description="HTTP port for the WebUI." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="Appdata" Target="/config" Default="/mnt/user/appdata/example-app" Mode="rw" Description="Persistent config files." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="PUID" Target="PUID" Default="99" Description="User ID to run the container as." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="PGID" Target="PGID" Default="100" Description="Group ID to run the container as." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+</Container>

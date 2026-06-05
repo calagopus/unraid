@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Community Apps starter icon</title>
+  <desc id="desc">Replace this placeholder icon before publishing your repository.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="url(#bg)" />
+  <path d="M56 84c0-15.464 12.536-28 28-28h88c15.464 0 28 12.536 28 28v88c0 15.464-12.536 28-28 28H84c-15.464 0-28-12.536-28-28z" fill="none" stroke="#bfdbfe" stroke-width="12" />
+  <path d="M96 128h64" stroke="#e0f2fe" stroke-linecap="round" stroke-width="14" />
+  <path d="M128 96v64" stroke="#e0f2fe" stroke-linecap="round" stroke-width="14" />
+  <text x="128" y="228" fill="#dbeafe" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">REPLACE ME</text>
+</svg>
