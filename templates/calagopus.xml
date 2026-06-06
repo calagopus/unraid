@@ -1,0 +1,73 @@
+<Container version="2">
+  <Name>calagopus</Name>
+  <Repository>ghcr.io/calagopus/panel:aio</Repository>
+  <Registry>https://ghcr.io/calagopus/panel</Registry>
+  <Network>calagopus</Network>
+
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+
+  <Icon>https://raw.githubusercontent.com/calagopus/website/main/web/public/icon.svg</Icon>
+
+  <WebUI>http://[IP]:[PORT:8000]</WebUI>
+
+  <Overview>Calagopus is a modern, open-source game server management panel built in Rust. Deploy, monitor, and manage Minecraft, Rust, and other game servers with industry-leading performance. This all-in-one template runs the panel alongside the Wings daemon. Requires separate PostgreSQL (e.g. postgres:17-alpine) and Valkey/Redis (e.g. valkey:latest) containers on the same Docker network.</Overview>
+
+  <Project>https://github.com/calagopus/panel</Project>
+
+  <TemplateURL>https://raw.githubusercontent.com/calagopus/unraid-calagopus/main/templates/calagopus.xml</TemplateURL>
+
+  <ReadMe>https://raw.githubusercontent.com/calagopus/panel/main/README.md</ReadMe>
+
+  <Discord>https://discord.gg/uSM8tvTxBV</Discord>
+
+  <Category>GameServers: Tools:System</Category>
+
+  <ExtraSearchTerms>pterodactyl wings game servers minecraft rust panel management</ExtraSearchTerms>
+
+  <Requires>Before starting: (1) Create a custom Docker network named "calagopus" in the Unraid Docker tab (Add Network). (2) Start a PostgreSQL container (e.g. postgres:17-alpine) named "calagopus-db" on the "calagopus" network with POSTGRES_USER=panel, POSTGRES_PASSWORD=panel, POSTGRES_DB=panel, and a /data volume. (3) Start a Valkey/Redis container (e.g. valkey:latest) named "calagopus-cache" on the "calagopus" network with a /data volume. (4) Set APP_ENCRYPTION_KEY to a secure random string (openssl rand -hex 32).</Requires>
+
+  <Changes>Initial release</Changes>
+
+  <Date>2026-06-05</Date>
+
+  <MinVer>6.1</MinVer>
+  <MaxVer>7.3</MaxVer>
+
+  <License>MIT</License>
+
+  <!-- Ports -->
+  <Config Name="WebUI Port" Target="8000" Default="8000" Mode="tcp" Description="HTTP port for the panel WebUI." Type="Port" Display="always" Required="true" Mask="false">8000</Config>
+  <Config Name="SFTP Port" Target="2022" Default="2022" Mode="tcp" Description="SFTP port for the integrated Wings daemon." Type="Port" Display="always" Required="true" Mask="false">2022</Config>
+
+  <!-- Panel data and logs -->
+  <Config Name="Panel Data" Target="/var/lib/calagopus" Default="/mnt/user/appdata/calagopus/data" Mode="rw" Description="Persistent panel data directory." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/data</Config>
+  <Config Name="Panel Logs" Target="/var/log/calagopus" Default="/mnt/user/appdata/calagopus/logs" Mode="rw" Description="Panel log directory." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/logs</Config>
+
+  <!-- Wings configuration and runtime paths -->
+  <Config Name="Wings Config File" Target="/wings-config.yml" Default="/mnt/user/appdata/calagopus/wings-config.yml" Mode="rw" Description="Wings AIO configuration file (will be created on first run if absent)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/wings-config.yml</Config>
+  <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="rw" Description="Docker socket — required for Wings to manage game server containers." Type="Path" Display="advanced" Required="true" Mask="false">/var/run/docker.sock</Config>
+  <Config Name="Docker Containers" Target="/var/lib/docker/containers/" Default="/var/lib/docker/containers/" Mode="rw" Description="Docker containers directory — required for Wings." Type="Path" Display="advanced" Required="true" Mask="false">/var/lib/docker/containers/</Config>
+  <Config Name="Pterodactyl Config Dir" Target="/etc/pterodactyl/" Default="/etc/pterodactyl/" Mode="rw" Description="Wings main configuration directory (config.yml lives here)." Type="Path" Display="advanced" Required="true" Mask="false">/etc/pterodactyl/</Config>
+  <Config Name="Pterodactyl Data Dir" Target="/var/lib/pterodactyl/" Default="/var/lib/pterodactyl/" Mode="rw" Description="Wings data directory (server volumes, backups, archives)." Type="Path" Display="advanced" Required="true" Mask="false">/var/lib/pterodactyl/</Config>
+  <Config Name="Pterodactyl Log Dir" Target="/var/log/pterodactyl/" Default="/var/log/pterodactyl/" Mode="rw" Description="Wings log directory." Type="Path" Display="advanced" Required="true" Mask="false">/var/log/pterodactyl/</Config>
+  <Config Name="Pterodactyl Tmp Dir" Target="/tmp/pterodactyl/" Default="/tmp/pterodactyl/" Mode="rw" Description="Wings temporary directory." Type="Path" Display="advanced" Required="true" Mask="false">/tmp/pterodactyl/</Config>
+
+  <!-- Required variables -->
+  <Config Name="Encryption Key" Target="APP_ENCRYPTION_KEY" Default="" Description="Required. A long, random secret key used to encrypt sensitive data. Generate one with: openssl rand -hex 32" Type="Variable" Display="always" Required="true" Mask="true">CHANGEME</Config>
+  <Config Name="Database URL" Target="DATABASE_URL" Default="postgresql://panel:panel@calagopus-db/panel" Description="PostgreSQL connection URL. Change the hostname to match your PostgreSQL container name." Type="Variable" Display="always" Required="true" Mask="false">postgresql://panel:panel@calagopus-db/panel</Config>
+  <Config Name="Redis URL" Target="REDIS_URL" Default="redis://calagopus-cache" Description="Redis/Valkey connection URL. Change the hostname to match your Valkey/Redis container name." Type="Variable" Display="always" Required="true" Mask="false">redis://calagopus-cache</Config>
+
+  <!-- Common variables -->
+  <Config Name="Timezone" Target="TZ" Default="UTC" Description="Container timezone." Type="Variable" Display="always" Required="false" Mask="false">UTC</Config>
+  <Config Name="Panel Port (internal)" Target="PORT" Default="8000" Description="Internal port the panel listens on. Should match the WebUI Port mapping above." Type="Variable" Display="advanced" Required="false" Mask="false">8000</Config>
+  <Config Name="Run Database Migrations" Target="DATABASE_MIGRATE" Default="true" Description="Automatically run database migrations on startup." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+
+  <!-- Advanced / optional variables -->
+  <Config Name="Debug Mode" Target="APP_DEBUG" Default="false" Description="Enable debug logging. Set to true only for troubleshooting." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Primary Instance" Target="APP_PRIMARY" Default="true" Description="Whether this instance runs background tasks (cleanup, etc.). Set to false for additional replicas." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Enable Wings Proxy" Target="APP_ENABLE_WINGS_PROXY" Default="true" Description="Proxy user requests to Wings nodes through the panel. Simplifies home network setups; not recommended for many nodes or high traffic." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Use Decryption Cache" Target="APP_USE_DECRYPTION_CACHE" Default="true" Description="Cache decrypted values in memory and Redis to improve performance. Slightly reduces security isolation." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Use Internal Cache" Target="APP_USE_INTERNAL_CACHE" Default="true" Description="Cache short-lived values in app memory in addition to Redis. Improves performance at the cost of higher memory usage." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+
+</Container>
