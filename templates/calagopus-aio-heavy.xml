@@ -1,5 +1,5 @@
 <Container version="2">
-  <Name>calagopus-aio</Name>
+  <Name>calagopus-aio-heavy</Name>
   <Repository>ghcr.io/calagopus/panel:aio-heavy</Repository>
   <Registry>https://ghcr.io/calagopus/panel</Registry>
   <Network>calagopus</Network>
