@@ -1,5 +1,5 @@
 <Container version="2">
-  <Name>calagopus</Name>
+  <Name>calagopus-aio</Name>
   <Repository>ghcr.io/calagopus/panel:aio</Repository>
   <Registry>https://ghcr.io/calagopus/panel</Registry>
   <Network>calagopus</Network>
@@ -11,7 +11,7 @@
 
   <WebUI>http://[IP]:[PORT:8000]</WebUI>
 
-  <Overview>Calagopus is a modern, open-source game server management panel built in Rust. Deploy, monitor, and manage Minecraft, Rust, and other game servers with industry-leading performance. This all-in-one template runs the panel alongside the Wings daemon. Requires separate PostgreSQL (e.g. postgres:17-alpine) and Valkey/Redis (e.g. valkey:latest) containers on the same Docker network.</Overview>
+  <Overview>Calagopus is a modern, open-source game server management panel built in Rust. Deploy, monitor, and manage Minecraft, Rust, and other game servers with industry-leading performance. This all-in-one template runs the panel alongside the Wings daemon. Requires separate PostgreSQL (e.g. postgres:18-alpine) and Valkey/Redis (e.g. valkey:latest) containers on the same Docker network.</Overview>
 
   <Project>https://github.com/calagopus/panel</Project>
 
@@ -25,14 +25,11 @@
 
   <ExtraSearchTerms>pterodactyl wings game servers minecraft rust panel management</ExtraSearchTerms>
 
-  <Requires>Before starting: (1) Create a custom Docker network named "calagopus" in the Unraid Docker tab (Add Network). (2) Start a PostgreSQL container (e.g. postgres:17-alpine) named "calagopus-db" on the "calagopus" network with POSTGRES_USER=panel, POSTGRES_PASSWORD=panel, POSTGRES_DB=panel, and a /data volume. (3) Start a Valkey/Redis container (e.g. valkey:latest) named "calagopus-cache" on the "calagopus" network with a /data volume. (4) Set APP_ENCRYPTION_KEY to a secure random string (openssl rand -hex 32).</Requires>
+  <Requires>Before starting: (1) Create a custom Docker network named "calagopus" in the Unraid Docker tab (Add Network). (2) Start a PostgreSQL container (e.g. postgres:18-alpine) named "calagopus-db" on the "calagopus" network with POSTGRES_USER=panel, POSTGRES_PASSWORD=panel, POSTGRES_DB=panel, and a /data volume. (3) Start a Valkey/Redis container (e.g. valkey:latest) named "calagopus-cache" on the "calagopus" network with a /data volume. (4) Set APP_ENCRYPTION_KEY to a secure random string (openssl rand -hex 32).</Requires>
 
   <Changes>Initial release</Changes>
 
-  <Date>2026-06-05</Date>
-
-  <MinVer>6.1</MinVer>
-  <MaxVer>7.3</MaxVer>
+  <Date>2026-06-18</Date>
 
   <License>MIT</License>
 
@@ -60,14 +57,5 @@
 
   <!-- Common variables -->
   <Config Name="Timezone" Target="TZ" Default="UTC" Description="Container timezone." Type="Variable" Display="always" Required="false" Mask="false">UTC</Config>
-  <Config Name="Panel Port (internal)" Target="PORT" Default="8000" Description="Internal port the panel listens on. Should match the WebUI Port mapping above." Type="Variable" Display="advanced" Required="false" Mask="false">8000</Config>
   <Config Name="Run Database Migrations" Target="DATABASE_MIGRATE" Default="true" Description="Automatically run database migrations on startup." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
-
-  <!-- Advanced / optional variables -->
-  <Config Name="Debug Mode" Target="APP_DEBUG" Default="false" Description="Enable debug logging. Set to true only for troubleshooting." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
-  <Config Name="Primary Instance" Target="APP_PRIMARY" Default="true" Description="Whether this instance runs background tasks (cleanup, etc.). Set to false for additional replicas." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
-  <Config Name="Enable Wings Proxy" Target="APP_ENABLE_WINGS_PROXY" Default="true" Description="Proxy user requests to Wings nodes through the panel. Simplifies home network setups; not recommended for many nodes or high traffic." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
-  <Config Name="Use Decryption Cache" Target="APP_USE_DECRYPTION_CACHE" Default="true" Description="Cache decrypted values in memory and Redis to improve performance. Slightly reduces security isolation." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
-  <Config Name="Use Internal Cache" Target="APP_USE_INTERNAL_CACHE" Default="true" Description="Cache short-lived values in app memory in addition to Redis. Improves performance at the cost of higher memory usage." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
-
 </Container>
