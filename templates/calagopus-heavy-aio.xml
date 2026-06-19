@@ -1,6 +1,6 @@
 <Container version="2">
   <Name>calagopus-aio-heavy</Name>
-  <Repository>ghcr.io/calagopus/panel:aio-heavy</Repository>
+  <Repository>ghcr.io/calagopus/panel:heavy-aio</Repository>
   <Registry>https://ghcr.io/calagopus/panel</Registry>
   <Network>calagopus</Network>
 
@@ -25,9 +25,22 @@
 
   <ExtraSearchTerms>pterodactyl wings game servers minecraft rust panel management</ExtraSearchTerms>
 
-  <Requires>Before starting: (1) Create a custom Docker network named "calagopus" in the Unraid Docker tab (Add Network). (2) Start a PostgreSQL container (e.g. postgres:18-alpine) named "calagopus-db" on the "calagopus" network with POSTGRES_USER=panel, POSTGRES_PASSWORD=panel, POSTGRES_DB=panel, and a /data volume. (3) Start a Valkey/Redis container (e.g. valkey:latest) named "calagopus-cache" on the "calagopus" network with a /data volume. (4) Set APP_ENCRYPTION_KEY to a secure random string (openssl rand -hex 32).</Requires>
+  <Requires>
+Before starting:
+(1) Create a custom Docker network named "calagopus" in the Unraid Docker tab (Add Network).
+(2) Start a PostgreSQL container (e.g. postgres:18-alpine) named "calagopus-db" on the "calagopus" network with POSTGRES_USER=panel, POSTGRES_PASSWORD=panel, POSTGRES_DB=panel, and a /data volume.
+(3) Start a Valkey/Redis container (e.g. valkey:latest) named "calagopus-cache" on the "calagopus" network with a /data volume.
+(4) Set APP_ENCRYPTION_KEY to a secure random string (openssl rand -hex 32).
+(5) Create an empty Wings config file before the first start. Docker requires the host file to exist or it will create a directory instead: touch /mnt/user/appdata/calagopus/wings-config.yml (run this in the Unraid terminal). The container will populate it on first run.
+  </Requires>
 
-  <Changes>Initial release</Changes>
+  <Changes>
+### 2026-06-19
+- Require wings-config.yml to be pre-created on the host (Docker creates a directory instead of a file if the path is absent)
+
+### 2026-06-18
+- Initial release
+  </Changes>
 
   <Date>2026-06-18</Date>
 
@@ -42,7 +55,7 @@
   <Config Name="Panel Logs" Target="/var/log/calagopus" Default="/mnt/user/appdata/calagopus/logs" Mode="rw" Description="Panel log directory." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/logs</Config>
 
   <!-- Wings configuration and runtime paths -->
-  <Config Name="Wings Config File" Target="/wings-config.yml" Default="/mnt/user/appdata/calagopus/wings-config.yml" Mode="rw" Description="Wings AIO configuration file (will be created on first run if absent)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/wings-config.yml</Config>
+  <Config Name="Wings Config File" Target="/wings-config.yml" Default="/mnt/user/appdata/calagopus/wings-config.yml" Mode="rw" Description="Wings AIO configuration file. Must exist on the host before starting, see setup instructions above (step 5). Docker will create a directory here instead of a file if the path is missing." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/wings-config.yml</Config>
   <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="rw" Description="Docker socket — required for Wings to manage game server containers." Type="Path" Display="advanced" Required="true" Mask="false">/var/run/docker.sock</Config>
   <Config Name="Docker Containers" Target="/var/lib/docker/containers/" Default="/var/lib/docker/containers/" Mode="rw" Description="Docker containers directory — required for Wings." Type="Path" Display="advanced" Required="true" Mask="false">/var/lib/docker/containers/</Config>
   <Config Name="Pterodactyl Config Dir" Target="/etc/pterodactyl/" Default="/etc/pterodactyl/" Mode="rw" Description="Wings main configuration directory (config.yml lives here)." Type="Path" Display="advanced" Required="true" Mask="false">/etc/pterodactyl/</Config>
