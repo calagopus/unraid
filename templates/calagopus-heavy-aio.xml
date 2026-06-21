@@ -7,7 +7,7 @@
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
 
-  <Icon>https://raw.githubusercontent.com/calagopus/website/main/web/public/icon.svg</Icon>
+  <Icon>https://raw.githubusercontent.com/calagopus/branding/refs/heads/main/img/logos/icon.png</Icon>
 
   <WebUI>http://[IP]:[PORT:8000]</WebUI>
 
