@@ -71,4 +71,13 @@ Before starting:
   <!-- Common variables -->
   <Config Name="Timezone" Target="TZ" Default="UTC" Description="Container timezone." Type="Variable" Display="always" Required="false" Mask="false">UTC</Config>
   <Config Name="Run Database Migrations" Target="DATABASE_MIGRATE" Default="true" Description="Automatically run database migrations on startup." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+
+  <!-- Hardcoded variables -->
+  <Config Name="Port" Target="PORT" Default="8000" Description="Internal HTTP port the panel listens on." Type="Variable" Display="false" Required="true" Mask="false">8000</Config>
+  <Config Name="Enable Wings Proxy" Target="APP_ENABLE_WINGS_PROXY" Default="true" Description="Enable the Wings proxy." Type="Variable" Display="false" Required="true" Mask="false">true</Config>
+  <Config Name="Use Decryption Cache" Target="APP_USE_DECRYPTION_CACHE" Default="true" Description="Use the decryption cache." Type="Variable" Display="false" Required="true" Mask="false">true</Config>
+  <Config Name="Use Internal Cache" Target="APP_USE_INTERNAL_CACHE" Default="true" Description="Use the internal cache." Type="Variable" Display="false" Required="true" Mask="false">true</Config>
+  <Config Name="Primary" Target="APP_PRIMARY" Default="true" Description="Mark this instance as primary." Type="Variable" Display="false" Required="true" Mask="false">true</Config>
+  <Config Name="Log Directory" Target="APP_LOG_DIRECTORY" Default="/var/log/calagopus" Description="Panel log directory inside the container." Type="Variable" Display="false" Required="true" Mask="false">/var/log/calagopus</Config>
+  <Config Name="AIO Base Wings Configuration" Target="AIO_BASE_WINGS_CONFIGURATION" Default="/wings-config.yml" Description="Path to the base Wings configuration file inside the container." Type="Variable" Display="false" Required="true" Mask="false">/wings-config.yml</Config>
 </Container>
