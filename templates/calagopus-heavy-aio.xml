@@ -54,6 +54,12 @@ Before starting:
   <Config Name="Panel Data" Target="/var/lib/calagopus" Default="/mnt/user/appdata/calagopus/data" Mode="rw" Description="Persistent panel data directory." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/data</Config>
   <Config Name="Panel Logs" Target="/var/log/calagopus" Default="/mnt/user/appdata/calagopus/logs" Mode="rw" Description="Panel log directory." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/logs</Config>
 
+  <!-- Panel extension paths -->
+  <Config Name="Binaries" Target="/app/binaries" Default="/mnt/user/appdata/calagopus/build/binaries" Mode="rw" Description="Custom binaries directory." Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/calagopus/build/binaries</Config>
+  <Config Name="Translations" Target="/app/translations" Default="/mnt/user/appdata/calagopus/build/translations" Mode="rw" Description="Custom translations directory." Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/calagopus/build/translations</Config>
+  <Config Name="Extensions" Target="/app/extensions" Default="/mnt/user/appdata/calagopus/build/extensions" Mode="rw" Description="Custom extensions directory." Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/calagopus/build/extensions</Config>
+  <Config Name="Extension Migrations" Target="/app/repo/database/extension-migrations" Default="/mnt/user/appdata/calagopus/build/extension-migrations" Mode="rw" Description="Extension database migrations directory." Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/calagopus/build/extension-migrations</Config>
+
   <!-- Wings configuration and runtime paths -->
   <Config Name="Wings Config File" Target="/wings-config.yml" Default="/mnt/user/appdata/calagopus/wings-config.yml" Mode="rw" Description="Wings AIO configuration file. Must exist on the host before starting, see setup instructions above (step 5). Docker will create a directory here instead of a file if the path is missing." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/calagopus/wings-config.yml</Config>
   <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="rw" Description="Docker socket — required for Wings to manage game server containers." Type="Path" Display="advanced" Required="true" Mask="false">/var/run/docker.sock</Config>
