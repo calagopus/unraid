@@ -15,7 +15,7 @@
 
   <Project>https://github.com/calagopus/panel</Project>
 
-  <TemplateURL>https://raw.githubusercontent.com/calagopus/unraid-calagopus/main/templates/calagopus-aio-heavy.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/calagopus/unraid/refs/heads/main/templates/calagopus-heavy-aio.xml</TemplateURL>
 
   <ReadMe>https://raw.githubusercontent.com/calagopus/panel/main/README.md</ReadMe>
 
