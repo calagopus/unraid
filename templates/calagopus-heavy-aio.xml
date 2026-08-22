@@ -26,12 +26,7 @@
   <ExtraSearchTerms>pterodactyl wings game servers minecraft rust panel management</ExtraSearchTerms>
 
   <Requires>
-Before starting:
-(1) Create a custom Docker network named "calagopus" in the Unraid Docker tab (Add Network).
-(2) Start a PostgreSQL container (e.g. postgres:18-alpine) named "calagopus-db" on the "calagopus" network with POSTGRES_USER=panel, POSTGRES_PASSWORD=panel, POSTGRES_DB=panel, and a /data volume.
-(3) Start a Valkey/Redis container (e.g. valkey:latest) named "calagopus-cache" on the "calagopus" network with a /data volume.
-(4) Set APP_ENCRYPTION_KEY to a secure random string (openssl rand -hex 32).
-(5) Create an empty Wings config file before the first start. Docker requires the host file to exist or it will create a directory instead: touch /mnt/user/appdata/calagopus/wings-config.yml (run this in the Unraid terminal). The container will populate it on first run.
+Requires PostgreSQL and Valkey containers on the same Docker network. Follow the instructions at https://calagopus.com/docs/panel/installation/unraid. 
   </Requires>
 
   <Changes>
