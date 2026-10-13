@@ -11,7 +11,7 @@
 
   <WebUI>http://[IP]:[PORT:8000]</WebUI>
 
-  <Overview>Calagopus is a modern, open-source game server management panel built in Rust. Deploy, monitor, and manage Minecraft, Rust, and other game servers with industry-leading performance. This all-in-one template runs the panel alongside the Wings daemon. Requires separate PostgreSQL (e.g. postgres:18-alpine) and Valkey/Redis (e.g. valkey:latest) containers on the same Docker network.</Overview>
+  <Overview>Calagopus is a modern, open-source game server management panel built in Rust. Deploy, monitor, and manage Minecraft, Rust, and other game servers with industry-leading performance. This all-in-one template runs the panel alongside the Wings daemon. Requires separate PostgreSQL and Valkey/Redis containers on the same Docker network.</Overview>
 
   <Project>https://github.com/calagopus/panel</Project>
 
